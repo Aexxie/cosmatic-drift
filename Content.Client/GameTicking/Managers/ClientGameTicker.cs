@@ -56,6 +56,7 @@ namespace Content.Client.GameTicking.Managers
             SubscribeNetworkEvent<RequestWindowAttentionEvent>(OnAttentionRequest);
             SubscribeNetworkEvent<TickerLateJoinStatusEvent>(LateJoinStatus);
             SubscribeNetworkEvent<TickerJobsAvailableEvent>(UpdateJobsAvailable);
+            SubscribeNetworkEvent<CDUpdateCalendarEvent>(CDUpdateCalendar); // CD Addition
 
             _admin.AdminStatusUpdated += OnAdminUpdated;
             OnAdminUpdated();
@@ -153,5 +154,12 @@ namespace Content.Client.GameTicking.Managers
 
             _userInterfaceManager.GetUIController<RoundEndSummaryUIController>().OpenRoundEndSummaryWindow(message);
         }
+
+        // CD Addition
+        private void CDUpdateCalendar(CDUpdateCalendarEvent message)
+        {
+            UniversalCalendar = message.UniversalCalendar;
+        }
+        // END CD Addition
     }
 }

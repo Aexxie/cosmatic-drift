@@ -69,6 +69,8 @@ namespace Content.Server.GameTicking
 
                     RaiseNetworkEvent(GetConnectionStatusMsg(), session.Channel);
 
+                    RaiseNetworkEvent(UpdateCalendar(), session.Channel); // CD Addition
+
                     if (firstConnection && _cfg.GetCVar(CCVars.AdminNewPlayerJoinSound))
                         _audio.PlayGlobal(new SoundPathSpecifier("/Audio/Effects/newplayerping.ogg"),
                             Filter.Empty().AddPlayers(_adminManager.ActiveAdmins), false,

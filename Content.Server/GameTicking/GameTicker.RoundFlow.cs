@@ -360,6 +360,8 @@ namespace Content.Server.GameTicking
 
             _startingRound = true;
 
+            ModifyCalendar(); // CD Addition
+
             if (RoundId == 0)
                 IncrementRoundNumber();
 
