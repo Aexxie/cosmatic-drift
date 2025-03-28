@@ -53,6 +53,11 @@ namespace Content.Server.Database
         Task<NetUserId?> GetAssignedUserIdAsync(string name);
         #endregion
 
+        #region Calendar
+        // CD Additions
+        Task<int?> AccessUniversalCalendar(int id, int mod = 0, bool set = false);
+        #endregion
+
         #region Bans
         /// <summary>
         ///     Looks up a ban by id.
@@ -453,6 +458,14 @@ namespace Content.Server.Database
             _sqliteInMemoryConnection?.Dispose();
             _db.Shutdown();
         }
+
+        // CD Addition
+        public Task<int?> AccessUniversalCalendar(int serverId, int mod, bool set)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AccessUniversalCalendar(serverId, mod, set));
+        }
+        // END CD Addition
 
         public Task<PlayerPreferences> InitPrefsAsync(
             NetUserId userId,

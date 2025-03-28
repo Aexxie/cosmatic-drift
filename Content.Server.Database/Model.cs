@@ -27,6 +27,7 @@ namespace Content.Server.Database
         public DbSet<AdminRank> AdminRank { get; set; } = null!;
         public DbSet<Round> Round { get; set; } = null!;
         public DbSet<Server> Server { get; set; } = null!;
+        public DbSet<CDModel.UniversalCalendar> UniversalCalendar { get; set; } = null!; // CD Addition
         public DbSet<AdminLog> AdminLog { get; set; } = null!;
         public DbSet<AdminLogPlayer> AdminLogPlayer { get; set; } = null!;
         public DbSet<Whitelist> Whitelist { get; set; } = null!;

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,20 @@ namespace Content.Server.Database;
 
 public static class CDModel
 {
+    /// <summary>
+    ///  Stores the canon Universal Date. Support system for multiple servers will need to be added. 1 Shift = 1 Day.
+    /// </summary>
+    public sealed class UniversalCalendar
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [ForeignKey("Server")] public int ServerId { get; set; }
+
+        public int CalendarDate { get; set; }
+
+    }
+
     /// <summary>
     /// Stores CD Character data separately from the main Profile. This is done to work around a bug
     /// in EFCore migrations.

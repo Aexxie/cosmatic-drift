@@ -40,6 +40,38 @@ namespace Content.Server.Database
             _opsLog = opsLog;
         }
 
+        #region Calendar
+        // CD Addition
+        public async Task<int?> AccessUniversalCalendar(int serverId, int mod, bool set)
+        {
+            await using var db = await GetDb();
+
+            var calendar = await db.DbContext
+                .UniversalCalendar
+                .SingleOrDefaultAsync(cal => cal.ServerId == serverId) ?? new CDModel.UniversalCalendar()
+            {
+                ServerId = serverId,
+                CalendarDate = mod,
+            };
+
+            if (set)
+            {
+                calendar.CalendarDate = mod;
+            }
+            else
+            {
+                calendar.CalendarDate += mod;
+            }
+
+            db.DbContext.UniversalCalendar.Update(calendar);
+
+            await db.DbContext.SaveChangesAsync();
+
+            return calendar.CalendarDate;
+        }
+        // END CD Addition
+        #endregion
+
         #region Preferences
         public async Task<PlayerPreferences?> GetPlayerPreferencesAsync(
             NetUserId userId,
