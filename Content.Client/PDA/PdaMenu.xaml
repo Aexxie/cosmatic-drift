@@ -34,14 +34,21 @@
             <ContainerButton Name="IdInfoButton">
                 <RichTextLabel Name="IdInfoLabel" Access="Public"/>
             </ContainerButton>
+            <!-- CD Changes -->
+            <BoxContainer HorizontalExpand="True" Margin="5"></BoxContainer>
+            <ContainerButton Name="UniversalTimeButton">
+                <RichTextLabel Name="UniversalTimeLabel" Access="Public"/>
+            </ContainerButton>
+            <ContainerButton Name="StationTimeButton">
+                <RichTextLabel Name="StationTimeLabel" Access="Public"/>
+            </ContainerButton>
+            <BoxContainer HorizontalExpand="True" Margin="5"></BoxContainer>
+            <!-- End CD Changes -->
             <ContainerButton Name="StationNameButton">
                 <RichTextLabel Name="StationNameLabel" Access="Public"/>
             </ContainerButton>
             <ContainerButton Name="StationAlertLevelButton">
                 <RichTextLabel Name="StationAlertLevelLabel" Access="Public"/>
-            </ContainerButton>
-            <ContainerButton Name="StationTimeButton">
-                <RichTextLabel Name="StationTimeLabel" Access="Public"/>
             </ContainerButton>
             <ContainerButton Name="StationAlertLevelInstructionsButton">
                 <RichTextLabel Name="StationAlertLevelInstructions" Access="Public"/>
